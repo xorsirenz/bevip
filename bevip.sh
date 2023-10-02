@@ -156,7 +156,7 @@ function binaries()
     main
 }
 
-function user_passwords()
+function credentials()
 {       banner
     printf "\n[${G}?${N}]Would you like to look for username & passwords in clear text files and save them to an output file?\n[${G}+${N}]Currently will search .php .sql & .txt files\n\n"
     read -p '[?]Proceed? Y/n: ' answer
@@ -187,7 +187,7 @@ function user_passwords()
 function main()
 {       banner
     PS3='Choose an option: '
-    options=("System Enumeration" "Installed Binaries" "User:Passwords" "Quit")
+    options=("System Enumeration" "Installed Binaries" "Credentials" "Quit")
     select opt in "${options[@]}"
     do
         case $opt in
@@ -197,8 +197,8 @@ function main()
             "Installed Binaries")
                 binaries
                 ;;
-            "User:Passwords")
-                user_passwords
+            "Credentials")
+                credentials
                 ;;
             "Quit")
                 exit 1
