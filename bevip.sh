@@ -105,8 +105,7 @@ function sys_enum()
 
     printf "\n[+]System Logs:\n" | tee -a $logfile
     find / -name "*.log" | tee -a $logfile 1>&2
-
-    
+ 
     all_binaries
 
     printf "\n[!]Finished!\n\n" | tee -a $logfile
@@ -121,6 +120,7 @@ function common_binaries()
     which gcc 2>/dev/null | tee -a $logfile
     which mknod 2>/dev/null | tee -a $logfile
     which netcat 2>/dev/null | tee -a $logfile
+    which nc 2>/dev/null | tee -a $logfile
     which nmap 2>/dev/null | tee -a $logfile
     which perl 2>/dev/null | tee -a $logfile
     which python 2>/dev/null | tee -a $logfile
@@ -184,10 +184,59 @@ function credentials()
     main
 }
 
+function external_tools()
+{       banner
+    printf "\n[${G}+${N}]Please select a tool listed below to downloaded and unpack into the /tmp/ directory\n"
+    PS3='Choose an option: '
+    options=("binario" "Back")
+    select opt in "${options[@]}"
+    do
+        case $opt in
+            "binario")
+                printf "\n"
+                wget -O /tmp/binario.zip https://github.com/bootlegwifi/binario/archive/main.zip
+                external_tools
+                ;;
+            "Back")
+                break
+                ;;
+            *) echo invalid option ;;
+        esac
+    done
+
+    printf "\n[${G}?${N}]If any external tools were installed, would you like to automatically unzip them?\n"
+    read -p '[?]Y/n? ' answer
+    if [[ $answer == 'y' ]]; then
+        workingdir=$(pwd) && cd /tmp/
+        for zip in *.zip
+        do
+            dirname=`echo $zip | sed 's/\.zip$//'`
+            if mkdir $dirname
+            then
+                if cd $dirname
+                then
+                    unzip ../$zip
+                    cd ..
+                    rm -f $zip
+                else
+                    echo "[!]ERROR[!] Could not unzip $zip :: cd command failed"
+                fi
+            else
+                echo "[!]ERROR[!] Could not unzip $zip :: mkdir command failed"
+            fi
+        done
+        cd $workingdir
+        sleep 1
+        main
+    else
+        main
+    fi
+}
+
 function main()
 {       banner
     PS3='Choose an option: '
-    options=("System Enumeration" "Installed Binaries" "Credentials" "Quit")
+    options=("System Enumeration" "Installed Binaries" "Credentials" "External Tools" "Quit")
     select opt in "${options[@]}"
     do
         case $opt in
@@ -199,6 +248,9 @@ function main()
                 ;;
             "Credentials")
                 credentials
+                ;;
+            "External Tools")
+                external_tools
                 ;;
             "Quit")
                 exit 1
