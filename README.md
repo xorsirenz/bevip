@@ -1,2 +1,2 @@
 # bevip
-enumeration, vulnerability identification, &amp; privilege escalation tool
+Bash Enumeration, Vulnerability Identification, &amp; Privilege escalation toolkit

@@ -1,14 +1,22 @@
 #!/bin/bash
 
+R='\033[0;31m'
+G='\033[0;32m'
+N='\033[0m'
+
 function banner()
 {   clear 2>/dev/null
-    printf "\n BEVIP - This program will enumerate linux system information and append it to a textfile.\n"
+    echo "    ___  _____   _________  "
+    echo "   / _ )/ __/ | / /  _/ _ \ "
+    echo "  / _  / _/ | |/ // // ___/ "
+    echo " /____/___/ |___/___/_/(ico)"
+    printf "BashEnumerationVulnerbilityIdentificationPrivildgeEscalationToolkit\n[${G}GITHUB:bootlegwifi${N}]\n"
 }
 
 function sys_enum()
 {       banner
-    printf "\n\nSystem Enumeration"
-    printf "\nInformation that will be enumerated:
+    printf "\n\n[${G}+${N}]System Enumeration"
+    printf "\n[${G}+${N}]Information that will be enumerated:
 
     1. User IDs, login history, & /etc/passwd 
     2. OS details, mounted disks, & kernel version
@@ -16,14 +24,14 @@ function sys_enum()
     4. Cron job & process information
     5. System logs \n\n"
 
-    read -p 'Proceed? Y/n : ' choice
+    read -p '[?]Proceed? Y/n: ' choice
     if [[ $choice == 'n' ]]; then
-        echo "Cancelled Enumeration"
         main
     fi
 
-    printf "\n\nWhat path would you like to save the output file?\nEXAMPLE: /tmp/output.txt\n"
-    read -p 'Path to logfile: ' logfile
+    printf "\n\n[${G}?${N}]What path would you like to save the output file?
+    ${G}EXAMPLE: /tmp/output.txt${N}\n\n"
+    read -p '[?]Path to logfile? ' logfile
     echo "-----------" | tee -a $logfile
     echo "|B|E|V|I|P|" | tee -a $logfile
     echo "-----------" | tee -a $logfile
