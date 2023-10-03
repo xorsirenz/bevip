@@ -188,17 +188,35 @@ function external_tools()
 {       banner
     printf "\n[${G}+${N}]Please select a tool listed below to downloaded and unpack into the /tmp/ directory\n"
     PS3='Choose an option: '
-    options=("binario" "Back")
+    options=("LinEnum - System Enumeration" "Traitor - Automatic Privesc" "Sudo Killer - Sudo Program Exploit" "All" "Back")
     select opt in "${options[@]}"
     do
         case $opt in
-            "binario")
+            "LinEnum - System Enumeration")
                 printf "\n"
-                wget -O /tmp/binario.zip https://github.com/bootlegwifi/binario/archive/main.zip
+                wget -O /tmp/LinEnum.zip https://github.com/rebootuser/LinEnum/archive/master.zip
+                external_tools
+                ;;
+            "Traitor - Automatic Privesc")
+                printf "\n"
+                wget -O /tmp/traitor.zip https://github.com/liamg/traitor/archive/main.zip
+                external_tools
+                ;;
+            "Sudo Killer - Sudo Program Exploit")
+                printf "\n"
+                wget -O /tmp/sudo_killer.zip https://github.com/TH3xACE/SUDO_KILLER/archive/master.zip
+                external_tools
+                ;;
+            "All")
+                printf "\n"
+                wget -O /tmp/LinEnum.zip https://github.com/rebootuser/LinEnum/archive/master.zip
+                wget -O /tmp/traitor.zip https://github.com/liamg/traitor/archive/main.zip
+                wget -O /tmp/sudo_killer.zip https://github.com/TH3xACE/SUDO_KILLER/archive/master.zip
                 external_tools
                 ;;
             "Back")
                 break
+                main
                 ;;
             *) echo invalid option ;;
         esac
@@ -219,10 +237,10 @@ function external_tools()
                     cd ..
                     rm -f $zip
                 else
-                    echo "[!]ERROR[!] Could not unzip $zip :: cd command failed"
+                    echo ""
                 fi
             else
-                echo "[!]ERROR[!] Could not unzip $zip :: mkdir command failed"
+                echo ""
             fi
         done
         cd $workingdir

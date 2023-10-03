@@ -11,4 +11,6 @@ Bash Enumeration, Vulnerability Identification, &amp; Privilege escalation toolk
 
 <h4>External Tools Available:</h4>
 
-[1] [Binario](https://github.com/bootlegwifi/binario) by [bootlegwifi](https://github.com/bootlegwifi) #added just for testing until other tools are added
+[1] [LinEnum](https://github.com/rebootuser/LinEnum) | [rebootuser](https://github.com/rebootuser)<br>
+[2] [Traitor](https://github.com/liamg/traitor) | [Liamg](https://github.com/liamg)<br>
+[3] [Sudo_Killer](https://github.com/TH3xACE/SUDO_KILLER) | [TH3xACE](https://github.com/TH3xACE)<br>
