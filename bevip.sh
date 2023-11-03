@@ -132,7 +132,7 @@ function common_binaries()
 
 function all_binaries()
 {
-    printf "\n[${G}+${N}]All Insatlled Binaries: \n" | tee -a $logfile
+    printf "\n[${G}+${N}]All Installed Binaries: \n" | tee -a $logfile
     ls -alh /usr/bin | tee -a $logfile 1>&2
     ls -alh /usr/local/bin | tee -a $logfile 1>&2
     ls -alh /opt/ | tee -a $logfile 1>&2

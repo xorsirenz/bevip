@@ -1,0 +1,24 @@
+cat /var/log/secure |grep "authentication failure"
+
+cat /var/log/secure | grep "user NOT in sudoers"
+
+cat /var/log/secure | grep "failed - POSSIBLE BREAK-IN ATTEMPT"
+
+cat /var/log/secure | grep lock
+
+last -aiF
+
+lastb -adF
+
+lastlog #man
+
+cat /var/log/cron | egrep 'FAIL|ERROR'
+
+journalctl _SYSTEMD_UNIT=sshd.service | grep error
+
+who
+
+ausearch #man
+
+
+
