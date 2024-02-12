@@ -10,7 +10,7 @@ function banner()
     echo "   / _ )/ __/ | / /  _/ _ \ "
     echo "  / _  / _/ | |/ // // ___/ "
     echo " /____/___/ |___/___/_/(ico)"
-    printf "BashEnumerationVulnerbilityIdentificationPrivildgeEscalationToolkit\n[${G}GITHUB:bootlegwifi${N}]\n"
+    printf "BashEnumerationVulnerbilityIdentificationPrivildgeEscalationToolkit\n[${G}GITHUB:xorsirenz${N}]\n"
 }
 
 function output()
@@ -41,7 +41,7 @@ function sys_enum()
     echo "-----------" | tee -a $logfile
     echo "|B|E|V|I|P|" | tee -a $logfile
     echo "-----------" | tee -a $logfile
-    echo "bootlegwifi" | tee -a $logfile
+    echo " xorsirenz " | tee -a $logfile
     echo "-----------" | tee -a $logfile
 
     printf "\n[+]Windows Key:\n" | tee -a $logfile
